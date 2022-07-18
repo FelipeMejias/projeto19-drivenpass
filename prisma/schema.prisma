@@ -61,6 +61,8 @@ model Card {
   userId Int 
   title String
   number String
+  name String
+  securityCode String
   expirationDate String
   password String
   isVirtual Boolean

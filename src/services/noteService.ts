@@ -8,11 +8,9 @@ async function post(data:NoteData){
   await noteRepository.insert(data)
 }
 
-async function get(id:number){
-    
-}
 async function getAll(userId:number) {
-    
+  const notes=await noteRepository.findAll(userId)
+  return notes
 }
 
 async function erase(id:number) {
@@ -20,5 +18,5 @@ async function erase(id:number) {
 }
 
 export const noteService={
-  get,getAll,post,erase
+  getAll,post,erase
 }

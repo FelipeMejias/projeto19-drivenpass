@@ -8,11 +8,14 @@ async function post(data:CredentialData){
   await credentialRepository.insert(data)
 }
 
-async function get(id:number){
-    
+async function get(credential:Object){
+  //descriptografar
+  return credential
 }
 async function getAll(userId:number) {
-    
+  const credentials=await credentialRepository.findAll(userId)
+  //descriptografar
+  return credentials
 }
 
 async function erase(id:number) {

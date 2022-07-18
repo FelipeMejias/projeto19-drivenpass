@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import { userRepository } from "../repositories/userRepository.js";
 import bcrypt from 'bcrypt'
+import {v4 as uuid}  from 'uuid'
 import { sessionRepository } from "../repositories/sessionRepository.js";
 
 export type UserData = Omit<User,'id'>
@@ -9,7 +10,7 @@ async function signIn(data:UserData){
     const user=await userRepository.find(data.email)
     if(!user || !bcrypt.compareSync(data.password,user.password)) throw {type:'unauthorized',message:'wrong user or password'}
 
-    const token=0
+    const token=uuid()
     await sessionRepository.insert({token,userId:user.id})
     return {token}
 }

@@ -8,11 +8,14 @@ async function post(data:WifiData){
   await wifiRepository.insert(data)
 }
 
-async function get(Id:number){
-    
+async function get(wifi:Object){
+  //descriptografar
+  return wifi
 }
 async function getAll(userId:number) {
-    
+  const wifis=await wifiRepository.findAll(userId)
+  //descriptografar
+  return wifis
 }
 
 async function erase(id:number) {

@@ -3,7 +3,7 @@ import { Session } from "@prisma/client";
 
 export type SessionData = Omit<Session,'id'>
 
-async function find(token:String) {
+async function find(token:string) {
   return await prisma.session.findUnique({
     where: { token }
   });
